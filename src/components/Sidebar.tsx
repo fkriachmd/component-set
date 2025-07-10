@@ -37,7 +37,7 @@ function Sidebar({
         <SidebarItem
           icon={CirclePlus}
           label="Component"
-          href="/components"
+          href="/about"
           isDarkMode={isDarkMode}
           isActive={activeItem === "component"}
         />

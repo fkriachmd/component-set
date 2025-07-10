@@ -1,4 +1,5 @@
 import type { LucideIcon } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface SidebarItemProps {
   icon: LucideIcon;
@@ -43,11 +44,23 @@ function SidebarItem({
     isDarkMode ? "text-slate-300" : "text-[#4d4256]"
   }`;
 
-  const Component = href ? "a" : "button";
+  if (href) {
+    return (
+      <Link
+        to={href}
+        className={`${baseClasses} ${variantClasses[variant]}`}
+      >
+        <Icon
+          className={iconClasses}
+          strokeWidth={variant === "search" ? 3 : 2}
+        />
+        {label && variant === "default" && <p className={textClasses}>{label}</p>}
+      </Link>
+    );
+  }
 
   return (
-    <Component
-      href={href}
+    <button
       onClick={onClick}
       className={`${baseClasses} ${variantClasses[variant]}`}
     >
@@ -56,7 +69,7 @@ function SidebarItem({
         strokeWidth={variant === "search" ? 3 : 2}
       />
       {label && variant === "default" && <p className={textClasses}>{label}</p>}
-    </Component>
+    </button>
   );
 }
 

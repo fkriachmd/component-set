@@ -1,4 +1,5 @@
 import { Component, Moon, Sun, Search } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface NavProps {
   isDarkMode: boolean;
@@ -14,9 +15,9 @@ function Nav({ isDarkMode, toggleDarkMode }: NavProps) {
         }`}
       >
         <Component className="w-[24px] h-[24px]" />
-        <a href="/" className="ml-2">
+        <Link to="/" className="ml-2">
           Component Set
-        </a>
+        </Link>
       </h1>
 
       <div className="flex items-center space-x-3">

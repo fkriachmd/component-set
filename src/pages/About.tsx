@@ -9,7 +9,7 @@ function About() {
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
   };
-  
+
   const features = [
     {
       icon: <Code className="w-6 h-6" />,
@@ -37,10 +37,10 @@ function About() {
           : "bg-gradient-to-br from-purple-50 to-pink-50"
       }`}
     >
-      <Sidebar 
-        isDarkMode={isDarkMode} 
-        activeItem="component" 
-        toggleDarkMode={toggleDarkMode} 
+      <Sidebar
+        isDarkMode={isDarkMode}
+        activeItem="component"
+        toggleDarkMode={toggleDarkMode}
       />
 
       <div className="ml-20 p-6">
