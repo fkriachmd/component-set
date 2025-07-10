@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Sidebar from "../components/Sidebar";
-import Nav from "../components/Nav";
 
 function Home() {
   const [isDarkMode, setIsDarkMode] = useState(false);
