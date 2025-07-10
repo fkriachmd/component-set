@@ -1,74 +1,63 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import reactLogo from "../assets/react.svg";
-import viteLogo from "/vite.svg";
+import Sidebar from "../components/Sidebar";
+import Nav from "../components/Nav";
 
 function Home() {
-  const [count, setCount] = useState(0);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center p-6">
-      <div className="bg-white rounded-3xl shadow-xl p-12 max-w-md w-full text-center border border-slate-200">
-        {/* Logo Section */}
-        <div className="flex justify-center items-center gap-8 mb-8">
+    <div
+      className={`min-h-screen transition-allduration-500 flex py-2 ${
+        isDarkMode
+          ? "bg-[#141314] text-[#E6E1E3]"
+          : "bg-[#FEFBFF] text-[#1C1B1D]"
+      }`}
+    >
+      <Sidebar
+        isDarkMode={isDarkMode}
+        toggleDarkMode={toggleDarkMode}
+        activeItem="home"
+      />
+      <div className="flex w-full gap-2  me-4">
+        <div
+          className={`h-[calc(100vh-30%)] w-full flex flex-col justify-center px-10 ${
+            isDarkMode ? "bg-[#1C1B1D]" : "bg-[#F2ECEE]"
+          } rounded-xl`}
+        >
+          <div className="hero-section">
+            <h1 className="text-[82px] font-semibold leading-none mb-4">
+              Component Set
+            </h1>
+            <p className="text-[24px]">
+              Design with clarity Build with confidence
+            </p>
+          </div>
           <a
-            href="https://vite.dev"
-            target="_blank"
-            className="group transition-transform duration-300 hover:scale-110"
+            href="/"
+            className="text-[#F2ECEE] text-center text-xl font-semibold w-40 px-2 py-4 mt-4 bg-[#6442D6] rounded-full shadow-md hover:bg-[#5537b6] transition-colors duration-300"
           >
-            <img
-              src={viteLogo}
-              className="h-16 w-16 transition-all duration-300 group-hover:drop-shadow-lg"
-              alt="Vite logo"
-            />
-          </a>
-          <div className="w-px h-12 bg-slate-200"></div>
-          <a
-            href="https://react.dev"
-            target="_blank"
-            className="group transition-transform duration-300 hover:scale-110"
-          >
-            <img
-              src={reactLogo}
-              className="h-16 w-16 animate-spin-slow transition-all duration-300 group-hover:drop-shadow-lg"
-              alt="React logo"
-            />
+            Component
           </a>
         </div>
-
-        {/* Title */}
-        <h1 className="text-3xl font-bold text-slate-800 mb-4 tracking-tight">
-          Welcome Home
-        </h1>
-        <p className="text-slate-600 mb-8">This is your beautiful homepage</p>
-
-        {/* Counter Card */}
-        <div className="bg-slate-50 rounded-2xl p-8 mb-8 border border-slate-100">
-          <button
-            onClick={() => setCount((count) => count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 mb-4"
+        <div className="h-[calc(100vh-30%)] w-full bg-[#F2ECEE] rounded-xl overflow-hidden flex items-center justify-center">
+          <video
+            className="w-full h-full object-cover rounded-xl"
+            autoPlay
+            loop
+            muted
+            playsInline
           >
-            Count is {count}
-          </button>
-          <p className="text-slate-600 text-sm">
-            Click the button to increase the counter
-          </p>
+            <source
+              src="https://kstatic.googleusercontent.com/files/d0a463d1d4b767b9a327739835737f23ee04e75e7e5835c2b6d657acc0ae6c046d3bb09fec5c169c20298a10ac74e04552d98c80aba4a82acce083ef0887f50e"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
         </div>
-
-        {/* Navigation */}
-        <div className="flex gap-4 justify-center">
-          <Link
-            to="/about"
-            className="bg-slate-200 hover:bg-slate-300 text-slate-800 px-6 py-2 rounded-lg font-medium transition-all duration-200 hover:scale-105"
-          >
-            About Page
-          </Link>
-        </div>
-
-        {/* Footer */}
-        <p className="text-slate-500 text-sm mt-8">
-          Navigate between pages using React Router
-        </p>
       </div>
     </div>
   );
