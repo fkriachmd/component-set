@@ -46,15 +46,14 @@ function SidebarItem({
 
   if (href) {
     return (
-      <Link
-        to={href}
-        className={`${baseClasses} ${variantClasses[variant]}`}
-      >
+      <Link to={href} className={`${baseClasses} ${variantClasses[variant]}`}>
         <Icon
           className={iconClasses}
           strokeWidth={variant === "search" ? 3 : 2}
         />
-        {label && variant === "default" && <p className={textClasses}>{label}</p>}
+        {label && variant === "default" && (
+          <p className={textClasses}>{label}</p>
+        )}
       </Link>
     );
   }

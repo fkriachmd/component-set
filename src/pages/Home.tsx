@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 
 function Home() {
@@ -35,12 +36,12 @@ function Home() {
               Design with clarity Build with confidence
             </p>
           </div>
-          <a
-            href="/"
+          <Link
+            to="/about"
             className="text-[#F2ECEE] text-center text-xl font-semibold w-40 px-2 py-4 mt-4 bg-[#6442D6] rounded-full shadow-md hover:bg-[#5537b6] transition-colors duration-300"
           >
             Component
-          </a>
+          </Link>
         </div>
         <div className="h-[calc(100vh-30%)] w-full bg-[#F2ECEE] rounded-xl overflow-hidden flex items-center justify-center">
           <video
