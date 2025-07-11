@@ -17,17 +17,11 @@ export default defineConfig({
         },
         entryFileNames: 'assets/[name]-[hash].js',
         chunkFileNames: 'assets/[name]-[hash].js',
-        assetFileNames: 'assets/[name]-[hash].[ext]',
-        // Ensure proper format for GitHub Pages
-        format: 'es'
+        assetFileNames: 'assets/[name]-[hash].[ext]'
       }
     },
-    target: 'es2018',
-    minify: 'esbuild',
-    // Generate legacy fallback for older browsers
-    cssCodeSplit: true,
-    // Ensure proper module format
-    lib: undefined
+    target: 'es2015',
+    minify: 'esbuild'
   },
   server: {
     port: 3000,

@@ -1,0 +1,10 @@
+# Netlify redirects file for GitHub Pages compatibility
+/*    /index.html   200
+
+# MIME type headers
+/*.js
+  Content-Type: text/javascript; charset=utf-8
+/*.mjs  
+  Content-Type: text/javascript; charset=utf-8
+/*.css
+  Content-Type: text/css; charset=utf-8
