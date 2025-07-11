@@ -36,16 +36,19 @@ jobs:
       - name: Add .nojekyll file
         run: touch ./dist/.nojekyll
 
-      - name: Fix MIME types for GitHub Pages
+      - name: Fix MIME types and module loading for GitHub Pages
         run: |
+          # Replace type="module" with type="text/javascript" in HTML files
+          find ./dist -name "*.html" -exec sed -i 's/type="module"/type="text\/javascript"/g' {} \;
+          
           # Create a web.config file for proper MIME types
           cat > ./dist/web.config << 'EOF'
           <?xml version="1.0" encoding="utf-8"?>
           <configuration>
             <system.webServer>
               <staticContent>
-                <mimeMap fileExtension=".js" mimeType="application/javascript" />
-                <mimeMap fileExtension=".mjs" mimeType="application/javascript" />
+                <mimeMap fileExtension=".js" mimeType="text/javascript" />
+                <mimeMap fileExtension=".mjs" mimeType="text/javascript" />
                 <mimeMap fileExtension=".css" mimeType="text/css" />
                 <mimeMap fileExtension=".json" mimeType="application/json" />
                 <mimeMap fileExtension=".svg" mimeType="image/svg+xml" />
@@ -64,6 +67,23 @@ jobs:
               </rewrite>
             </system.webServer>
           </configuration>
+          EOF
+          
+          # Create .htaccess as fallback
+          cat > ./dist/.htaccess << 'EOF'
+          AddType text/javascript .js
+          AddType text/javascript .mjs
+          AddType text/css .css
+          AddType application/json .json
+          AddType image/svg+xml .svg
+          
+          # Handle client-side routing
+          RewriteEngine On
+          RewriteBase /
+          RewriteRule ^index\.html$ - [L]
+          RewriteCond %{REQUEST_FILENAME} !-f
+          RewriteCond %{REQUEST_FILENAME} !-d
+          RewriteRule . /index.html [L]
           EOF
 
       - name: Setup Pages
