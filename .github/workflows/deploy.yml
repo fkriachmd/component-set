@@ -36,10 +36,13 @@ jobs:
       - name: Add .nojekyll file
         run: touch ./dist/.nojekyll
 
-      - name: Fix MIME types and module loading for GitHub Pages
+      - name: Convert ES modules to regular scripts for GitHub Pages
         run: |
-          # Replace type="module" with type="text/javascript" in HTML files
+          # Convert type="module" to type="text/javascript" in HTML files
           find ./dist -name "*.html" -exec sed -i 's/type="module"/type="text\/javascript"/g' {} \;
+          
+          # Remove modulepreload links as they're not needed for regular scripts
+          find ./dist -name "*.html" -exec sed -i '/<link rel="modulepreload"/d' {} \;
           
           # Create a web.config file for proper MIME types
           cat > ./dist/web.config << 'EOF'
@@ -67,23 +70,6 @@ jobs:
               </rewrite>
             </system.webServer>
           </configuration>
-          EOF
-          
-          # Create .htaccess as fallback
-          cat > ./dist/.htaccess << 'EOF'
-          AddType text/javascript .js
-          AddType text/javascript .mjs
-          AddType text/css .css
-          AddType application/json .json
-          AddType image/svg+xml .svg
-          
-          # Handle client-side routing
-          RewriteEngine On
-          RewriteBase /
-          RewriteRule ^index\.html$ - [L]
-          RewriteCond %{REQUEST_FILENAME} !-f
-          RewriteCond %{REQUEST_FILENAME} !-d
-          RewriteRule . /index.html [L]
           EOF
 
       - name: Setup Pages
