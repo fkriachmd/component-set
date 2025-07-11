@@ -42,7 +42,7 @@ function Home() {
               }`}
             >
               <div className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></div>
-              Modern Component Library
+              Build with confidence
             </div>
 
             {/* Main Heading */}
@@ -51,9 +51,9 @@ function Home() {
                 isDarkMode ? "text-white" : "text-gray-900"
               }`}
             >
-              Build with
+              fkriachmd's
               <span className="block font-medium bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                confidence
+                component pool
               </span>
             </h1>
 
@@ -153,11 +153,17 @@ function Home() {
           <div
             className={`relative rounded-3xl overflow-hidden shadow-2xl transition-all duration-300 ${
               isDarkMode
-                ? "bg-gray-800 hover:bg-gray-700"
+                ? "bg-[#202020] hover:bg-neutral-900"
                 : "bg-gray-50 hover:bg-gray-100"
             }`}
           >
-            <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 z-10"></div>
+            <div
+              className={`absolute inset-0 bg-gradient-to-tr ${
+                isDarkMode
+                  ? "from-blue-500/20 to-purple-500/20"
+                  : "from-blue-500/10 to-purple-500/0"
+              } z-10`}
+            ></div>
             <video
               className="w-full h-[600px] object-cover"
               autoPlay

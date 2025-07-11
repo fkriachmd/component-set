@@ -83,7 +83,7 @@ function About() {
             <div
               className={`rounded-3xl shadow-xl p-6 mb-12 border ${
                 isDarkMode
-                  ? "bg-gray-800 border-gray-700"
+                  ? "bg-[#202020] border-gray-700/0"
                   : "bg-white border-gray-100"
               }`}
             >
@@ -134,7 +134,7 @@ function About() {
                   key={index}
                   className={`rounded-2xl p-8 shadow-lg border transition-all duration-300 hover:shadow-xl ${
                     isDarkMode
-                      ? "bg-gray-800 border-gray-700 hover:bg-gray-700"
+                      ? "bg-[#202020] border-gray-700/0 hover:bg-neutral-900"
                       : "bg-white border-gray-100 hover:bg-gray-50"
                   }`}
                 >
@@ -163,7 +163,7 @@ function About() {
             <div
               className={`rounded-3xl shadow-xl p-10 border ${
                 isDarkMode
-                  ? "bg-gray-800 border-gray-700"
+                  ? "bg-[#202020] border-gray-700/0"
                   : "bg-white border-gray-100"
               }`}
             >
@@ -193,10 +193,10 @@ function About() {
                 ].map((tech) => (
                   <div
                     key={tech.name}
-                    className={`rounded-xl p-4 text-center border transition-all duration-300 ${
+                    className={`rounded-xl p-4 text-center  transition-all duration-300 ${
                       isDarkMode
-                        ? "bg-gray-700 border-gray-600 hover:bg-gray-600"
-                        : "bg-gray-50 border-gray-200 hover:bg-gray-100"
+                        ? "bg-neutral-900  hover:bg-neutral-800"
+                        : "bg-gray-50 border border-gray-200 hover:bg-gray-100"
                     }`}
                   >
                     <div
@@ -218,7 +218,7 @@ function About() {
             <div className="text-center mt-16">
               <Link
                 to="/"
-                className={`inline-flex items-center px-8 py-4 rounded-full font-medium transition-all duration-300 ${
+                className={`inline-flex items-center px-8 py-4 rounded-full font-medium transition-all duration-300 transform hover:scale-105 ${
                   isDarkMode
                     ? "bg-white text-black hover:bg-gray-100 shadow-lg"
                     : "bg-gray-900 text-white hover:bg-gray-800 shadow-lg"

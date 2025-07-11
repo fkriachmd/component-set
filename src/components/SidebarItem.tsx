@@ -26,7 +26,7 @@ function SidebarItem({
   const variantClasses = {
     search: `${
       isDarkMode
-        ? "bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white focus:ring-gray-400"
+        ? "bg-neutral-900 hover:bg-neutral-800 text-gray-300 hover:text-white focus:ring-gray-400"
         : "bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-800 focus:ring-gray-400"
     }`,
     default: `${
@@ -35,7 +35,7 @@ function SidebarItem({
           ? "bg-blue-600 text-white shadow-lg focus:ring-blue-400"
           : "bg-blue-600 text-white shadow-lg focus:ring-blue-400"
         : isDarkMode
-        ? "bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white focus:ring-gray-400"
+        ? "bg-neutral-900 hover:bg-neutral-800 text-gray-300 hover:text-white focus:ring-gray-400"
         : "bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-800 focus:ring-gray-400"
     }`,
   };

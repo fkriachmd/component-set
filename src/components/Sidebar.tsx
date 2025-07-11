@@ -15,9 +15,7 @@ function Sidebar({
   return (
     <div
       className={`side-bar flex justify-between flex-col items-center gap-6 w-20 h-[calc(100vh-48px)] mx-3 my-6 py-6 rounded-3xl transition-all duration-500 shadow-xl sticky top-6 ${
-        isDarkMode
-          ? "bg-gray-800 border border-gray-700"
-          : "bg-white border border-gray-100"
+        isDarkMode ? "bg-[#202020]" : "bg-white border border-gray-100"
       }`}
     >
       <div className="flex justify-start flex-col items-center gap-5">
@@ -62,7 +60,7 @@ function Sidebar({
           onClick={toggleDarkMode}
           className={`p-3 rounded-2xl transition-all duration-300 ${
             isDarkMode
-              ? "bg-gray-700 hover:bg-gray-600 text-yellow-400"
+              ? "bg-neutral-900 hover:bg-neutral-800 text-yellow-400"
               : "bg-gray-100 hover:bg-gray-200 text-gray-600"
           } focus:outline-none focus:ring-2 focus:ring-offset-2 ${
             isDarkMode ? "focus:ring-yellow-400" : "focus:ring-gray-400"
