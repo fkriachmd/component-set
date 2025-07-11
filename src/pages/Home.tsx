@@ -63,9 +63,9 @@ function Home() {
                 isDarkMode ? "text-gray-300" : "text-gray-600"
               }`}
             >
-              Create beautiful, accessible, and performant user interfaces with
-              our modern component library. Designed with simplicity and
-              developer experience in mind.
+              This is where I collect the various components and libraries that
+              I use during the development process, whether for learning
+              purposes, personal projects, or coding experiments.
             </p>
 
             {/* CTA Buttons */}
@@ -152,7 +152,9 @@ function Home() {
         <div className="flex-1 flex items-center justify-center">
           <div
             className={`relative rounded-3xl overflow-hidden shadow-2xl transition-all duration-300 ${
-              isDarkMode ? "bg-gray-800 hover:bg-gray-700" : "bg-gray-50 hover:bg-gray-100"
+              isDarkMode
+                ? "bg-gray-800 hover:bg-gray-700"
+                : "bg-gray-50 hover:bg-gray-100"
             }`}
           >
             <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 z-10"></div>
