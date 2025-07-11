@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fkriachmd.github.io/sitemap.xml

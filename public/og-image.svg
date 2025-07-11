@@ -1,0 +1,65 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#1a1a1a"/>
+  
+  <!-- Gradient Background -->
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:0.1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#gradient)"/>
+  
+  <!-- Grid Pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#3B82F6" stroke-width="0.5" opacity="0.1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  
+  <!-- Main Content -->
+  <g transform="translate(120, 150)">
+    <!-- Title -->
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="64" font-weight="300" fill="#ffffff">
+      fkriachmd's
+    </text>
+    <text x="0" y="80" font-family="Arial, sans-serif" font-size="72" font-weight="600" fill="#3B82F6">
+      component pool
+    </text>
+    
+    <!-- Description -->
+    <text x="0" y="160" font-family="Arial, sans-serif" font-size="28" fill="#9CA3AF" font-weight="400">
+      A collection of beautiful, modern React components
+    </text>
+    <text x="0" y="200" font-family="Arial, sans-serif" font-size="28" fill="#9CA3AF" font-weight="400">
+      Built with TypeScript, Tailwind CSS, and modern web technologies
+    </text>
+    
+    <!-- Stats -->
+    <g transform="translate(0, 280)">
+      <rect x="0" y="0" width="120" height="80" rx="12" fill="#3B82F6" fill-opacity="0.1" stroke="#3B82F6" stroke-width="1"/>
+      <text x="60" y="35" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#ffffff" text-anchor="middle">50+</text>
+      <text x="60" y="55" font-family="Arial, sans-serif" font-size="14" fill="#9CA3AF" text-anchor="middle">Components</text>
+      
+      <rect x="140" y="0" width="120" height="80" rx="12" fill="#8B5CF6" fill-opacity="0.1" stroke="#8B5CF6" stroke-width="1"/>
+      <text x="200" y="35" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#ffffff" text-anchor="middle">100%</text>
+      <text x="200" y="55" font-family="Arial, sans-serif" font-size="14" fill="#9CA3AF" text-anchor="middle">Accessible</text>
+      
+      <rect x="280" y="0" width="120" height="80" rx="12" fill="#10B981" fill-opacity="0.1" stroke="#10B981" stroke-width="1"/>
+      <text x="340" y="35" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#ffffff" text-anchor="middle">TS</text>
+      <text x="340" y="55" font-family="Arial, sans-serif" font-size="14" fill="#9CA3AF" text-anchor="middle">TypeScript</text>
+    </g>
+  </g>
+  
+  <!-- Decorative Elements -->
+  <circle cx="1000" cy="150" r="100" fill="#3B82F6" fill-opacity="0.1"/>
+  <circle cx="1050" cy="200" r="60" fill="#8B5CF6" fill-opacity="0.1"/>
+  <circle cx="950" cy="250" r="40" fill="#10B981" fill-opacity="0.1"/>
+  
+  <!-- Bottom Brand -->
+  <text x="600" y="580" font-family="Arial, sans-serif" font-size="18" fill="#6B7280" text-anchor="middle">
+    https://fkriachmd.github.io
+  </text>
+</svg>

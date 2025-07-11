@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OpenGraph Image Generator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #1a1a1a;
+            color: white;
+        }
+        canvas {
+            border: 1px solid #333;
+            max-width: 100%;
+        }
+        .controls {
+            margin-bottom: 20px;
+        }
+        button {
+            background: #3B82F6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background: #2563EB;
+        }
+    </style>
+</head>
+<body>
+    <h1>OpenGraph Image Generator</h1>
+    <div class="controls">
+        <button onclick="generateImage()">Generate OpenGraph Image</button>
+        <button onclick="downloadImage()">Download Image</button>
+    </div>
+    <canvas id="ogCanvas" width="1200" height="630"></canvas>
+
+    <script>
+        const canvas = document.getElementById('ogCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function generateImage() {
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Background
+            ctx.fillStyle = '#1a1a1a';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Gradient background
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, 'rgba(59, 130, 246, 0.1)');
+            gradient.addColorStop(1, 'rgba(139, 92, 246, 0.1)');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Grid pattern
+            ctx.strokeStyle = 'rgba(59, 130, 246, 0.1)';
+            ctx.lineWidth = 0.5;
+            for (let x = 0; x <= canvas.width; x += 40) {
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, canvas.height);
+                ctx.stroke();
+            }
+            for (let y = 0; y <= canvas.height; y += 40) {
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(canvas.width, y);
+                ctx.stroke();
+            }
+            
+            // Title
+            ctx.fillStyle = '#ffffff';
+            ctx.font = '300 64px Arial, sans-serif';
+            ctx.fillText("fkriachmd's", 120, 214);
+            
+            ctx.fillStyle = '#3B82F6';
+            ctx.font = '600 72px Arial, sans-serif';
+            ctx.fillText("component pool", 120, 294);
+            
+            // Description
+            ctx.fillStyle = '#9CA3AF';
+            ctx.font = '400 28px Arial, sans-serif';
+            ctx.fillText("A collection of beautiful, modern React components", 120, 354);
+            ctx.fillText("Built with TypeScript, Tailwind CSS, and modern web technologies", 120, 394);
+            
+            // Stats boxes
+            const statsY = 430;
+            
+            // Box 1
+            ctx.strokeStyle = '#3B82F6';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(120, statsY, 120, 80);
+            ctx.fillStyle = 'rgba(59, 130, 246, 0.1)';
+            ctx.fillRect(120, statsY, 120, 80);
+            
+            ctx.fillStyle = '#ffffff';
+            ctx.font = '700 32px Arial, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText("50+", 180, statsY + 45);
+            ctx.fillStyle = '#9CA3AF';
+            ctx.font = '400 14px Arial, sans-serif';
+            ctx.fillText("Components", 180, statsY + 65);
+            
+            // Box 2
+            ctx.strokeStyle = '#8B5CF6';
+            ctx.strokeRect(260, statsY, 120, 80);
+            ctx.fillStyle = 'rgba(139, 92, 246, 0.1)';
+            ctx.fillRect(260, statsY, 120, 80);
+            
+            ctx.fillStyle = '#ffffff';
+            ctx.font = '700 32px Arial, sans-serif';
+            ctx.fillText("100%", 320, statsY + 45);
+            ctx.fillStyle = '#9CA3AF';
+            ctx.font = '400 14px Arial, sans-serif';
+            ctx.fillText("Accessible", 320, statsY + 65);
+            
+            // Box 3
+            ctx.strokeStyle = '#10B981';
+            ctx.strokeRect(400, statsY, 120, 80);
+            ctx.fillStyle = 'rgba(16, 185, 129, 0.1)';
+            ctx.fillRect(400, statsY, 120, 80);
+            
+            ctx.fillStyle = '#ffffff';
+            ctx.font = '700 32px Arial, sans-serif';
+            ctx.fillText("TS", 460, statsY + 45);
+            ctx.fillStyle = '#9CA3AF';
+            ctx.font = '400 14px Arial, sans-serif';
+            ctx.fillText("TypeScript", 460, statsY + 65);
+            
+            // Decorative circles
+            ctx.fillStyle = 'rgba(59, 130, 246, 0.1)';
+            ctx.beginPath();
+            ctx.arc(1000, 150, 100, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            ctx.fillStyle = 'rgba(139, 92, 246, 0.1)';
+            ctx.beginPath();
+            ctx.arc(1050, 200, 60, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            ctx.fillStyle = 'rgba(16, 185, 129, 0.1)';
+            ctx.beginPath();
+            ctx.arc(950, 250, 40, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Bottom brand
+            ctx.fillStyle = '#6B7280';
+            ctx.font = '400 18px Arial, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText("https://fkriachmd.github.io", 600, 580);
+            
+            // Reset text align
+            ctx.textAlign = 'left';
+        }
+
+        function downloadImage() {
+            const link = document.createElement('a');
+            link.download = 'og-image.jpg';
+            link.href = canvas.toDataURL('image/jpeg', 0.9);
+            link.click();
+        }
+
+        // Generate image on load
+        generateImage();
+    </script>
+</body>
+</html>
