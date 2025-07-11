@@ -1,0 +1,52 @@
+import fs from "fs";
+import path from "path";
+
+// Create a simple base64 encoded JPG image for OpenGraph
+const createOpenGraphImage = () => {
+  // This is a placeholder - in a real scenario, you'd use a proper image generation library
+  // For now, we'll create a simple colored rectangle as JPG
+  const canvas = `
+    <svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1200" height="630" fill="#1a1a1a"/>
+      <defs>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:0.1" />
+          <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:0.1" />
+        </linearGradient>
+      </defs>
+      <rect width="1200" height="630" fill="url(#gradient)"/>
+      
+      <text x="120" y="200" font-family="Arial, sans-serif" font-size="64" font-weight="300" fill="#ffffff">
+        fkriachmd's
+      </text>
+      <text x="120" y="280" font-family="Arial, sans-serif" font-size="72" font-weight="600" fill="#3B82F6">
+        component pool
+      </text>
+      
+      <text x="120" y="360" font-family="Arial, sans-serif" font-size="28" fill="#9CA3AF">
+        A collection of beautiful, modern React components
+      </text>
+      <text x="120" y="400" font-family="Arial, sans-serif" font-size="28" fill="#9CA3AF">
+        Built with TypeScript, Tailwind CSS, and modern web technologies
+      </text>
+      
+      <text x="600" y="580" font-family="Arial, sans-serif" font-size="18" fill="#6B7280" text-anchor="middle">
+        https://fkriachmd.github.io
+      </text>
+    </svg>
+  `;
+
+  return canvas;
+};
+
+// Write the SVG to file
+const svgContent = createOpenGraphImage();
+fs.writeFileSync(
+  path.join(process.cwd(), "public", "og-image-final.svg"),
+  svgContent
+);
+
+console.log("OpenGraph SVG image created successfully!");
+console.log(
+  "Please convert this SVG to JPG format using an online converter or image editing software."
+);
