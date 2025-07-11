@@ -64,18 +64,21 @@ src/
 ## 🎨 Components
 
 ### Sidebar
+
 - **Dark mode toggle** with smooth transitions
 - **Active state** highlighting
 - **Responsive design** with proper spacing
 - **Icon-based navigation** using Lucide React
 
 ### Navigation
+
 - **Search functionality** (UI ready)
 - **Brand logo** with routing
 - **Theme toggle** integration
 - **Responsive design**
 
 ### Pages
+
 - **Home**: Hero section with video background
 - **About**: Feature showcase and tech stack
 
@@ -138,6 +141,7 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 ## 👨‍💻 Author
 
 **Fakriachmd**
+
 - GitHub: [@fkriachmd](https://github.com/fkriachmd)
 - Website: [https://fkriachmd.github.io](https://fkriachmd.github.io)
 
