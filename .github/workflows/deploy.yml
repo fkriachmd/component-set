@@ -39,10 +39,14 @@ jobs:
       - name: Fix script tags for GitHub Pages compatibility
         run: |
           # Remove type="module" from script tags since we're using IIFE format
-          find ./dist -name "*.html" -exec sed -i 's/type="module"//g' {} \;
+          sed -i 's/type="module"//g' ./dist/index.html
           
-          # Clean up any extra spaces or attributes
-          find ./dist -name "*.html" -exec sed -i 's/  crossorigin/ crossorigin/g' {} \;
+          # Clean up any extra spaces
+          sed -i 's/<script  crossorigin/<script crossorigin/g' ./dist/index.html
+          
+          # Verify the changes
+          echo "=== After modification ==="
+          grep -n "script.*src" ./dist/index.html || echo "No script tags found"
 
       - name: Setup GitHub Pages configuration
         run: |
