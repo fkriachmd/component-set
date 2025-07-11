@@ -36,14 +36,16 @@ jobs:
       - name: Add .nojekyll file
         run: touch ./dist/.nojekyll
 
-      - name: Convert ES modules to regular scripts for GitHub Pages
+      - name: Fix script tags for GitHub Pages compatibility
         run: |
-          # Convert type="module" to type="text/javascript" in HTML files
-          find ./dist -name "*.html" -exec sed -i 's/type="module"/type="text\/javascript"/g' {} \;
+          # Remove type="module" from script tags since we're using IIFE format
+          find ./dist -name "*.html" -exec sed -i 's/type="module"//g' {} \;
           
-          # Remove modulepreload links as they're not needed for regular scripts
-          find ./dist -name "*.html" -exec sed -i '/<link rel="modulepreload"/d' {} \;
-          
+          # Clean up any extra spaces or attributes
+          find ./dist -name "*.html" -exec sed -i 's/  crossorigin/ crossorigin/g' {} \;
+
+      - name: Setup GitHub Pages configuration
+        run: |
           # Create a web.config file for proper MIME types
           cat > ./dist/web.config << 'EOF'
           <?xml version="1.0" encoding="utf-8"?>

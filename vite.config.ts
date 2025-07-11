@@ -11,13 +11,13 @@ export default defineConfig({
     sourcemap: false,
     rollupOptions: {
       output: {
+        format: 'iife',
+        name: 'App',
         entryFileNames: 'assets/[name]-[hash].js',
         chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash].[ext]',
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          router: ['react-router-dom']
-        }
+        // Bundle everything into a single file to avoid module loading issues
+        manualChunks: undefined
       }
     },
     target: 'es2015',
