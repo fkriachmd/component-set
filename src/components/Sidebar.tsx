@@ -60,7 +60,7 @@ function Sidebar({
 
         <button
           onClick={toggleDarkMode}
-          className={`p-3 rounded-2xl transition-all duration-300 hover:scale-110 ${
+          className={`p-3 rounded-2xl transition-all duration-300 ${
             isDarkMode
               ? "bg-gray-700 hover:bg-gray-600 text-yellow-400"
               : "bg-gray-100 hover:bg-gray-200 text-gray-600"

@@ -21,7 +21,7 @@ function SidebarItem({
   variant = "default",
 }: SidebarItemProps) {
   const baseClasses =
-    "flex items-center justify-center w-12 h-12 rounded-2xl transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2";
+    "flex items-center justify-center w-12 h-12 rounded-2xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2";
 
   const variantClasses = {
     search: `${
