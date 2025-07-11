@@ -17,13 +17,23 @@ export default defineConfig({
         },
         entryFileNames: 'assets/[name]-[hash].js',
         chunkFileNames: 'assets/[name]-[hash].js',
-        assetFileNames: 'assets/[name]-[hash].[ext]'
+        assetFileNames: 'assets/[name]-[hash].[ext]',
+        // Ensure proper format for GitHub Pages
+        format: 'es'
       }
     },
-    target: 'es2015'
+    target: 'es2018',
+    minify: 'esbuild',
+    // Generate legacy fallback for older browsers
+    cssCodeSplit: true,
+    // Ensure proper module format
+    lib: undefined
   },
   server: {
     port: 3000,
     open: true
+  },
+  preview: {
+    port: 4173
   }
 })
