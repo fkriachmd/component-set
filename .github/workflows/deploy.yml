@@ -45,19 +45,56 @@ jobs:
           sed -i 's/<script[[:space:]]\+crossorigin/<script crossorigin/g' ./dist/index.html
           
           # Verify the changes
-          echo "=== After modification ==="
-          grep -n "script.*src" ./dist/index.html || echo "No script tags found"
+          echo "=== HTML content after modification ==="
+          cat ./dist/index.html | grep -A 3 -B 3 "script.*src"
+          
+          echo "=== JavaScript file details ==="
+          ls -la ./dist/assets/*.js
+          
+          echo "=== JavaScript file beginning ==="
+          head -c 200 ./dist/assets/*.js
 
       - name: Setup GitHub Pages configuration
         run: |
-          # Create a web.config file for proper MIME types
+          # Create .htaccess for Apache servers
+          cat > ./dist/.htaccess << 'EOF'
+          AddType text/javascript .js
+          AddType text/css .css
+          AddType application/json .json
+          AddType image/svg+xml .svg
+          
+          # Fallback for SPA routing
+          RewriteEngine On
+          RewriteBase /
+          RewriteRule ^index\.html$ - [L]
+          RewriteCond %{REQUEST_FILENAME} !-f
+          RewriteCond %{REQUEST_FILENAME} !-d
+          RewriteRule . /index.html [L]
+          EOF
+          
+          # Create _headers for Netlify/Vercel compatibility
+          cat > ./dist/_headers << 'EOF'
+          /*.js
+            Content-Type: text/javascript
+          /*.css
+            Content-Type: text/css
+          /*.json
+            Content-Type: application/json
+          /*.svg
+            Content-Type: image/svg+xml
+          EOF
+          
+          # Create web.config for IIS servers
           cat > ./dist/web.config << 'EOF'
           <?xml version="1.0" encoding="utf-8"?>
           <configuration>
             <system.webServer>
               <staticContent>
+                <remove fileExtension=".js" />
+                <remove fileExtension=".css" />
+                <remove fileExtension=".json" />
+                <remove fileExtension=".svg" />
                 <mimeMap fileExtension=".js" mimeType="text/javascript" />
-                <mimeMap fileExtension=".mjs" mimeType="text/javascript" />
                 <mimeMap fileExtension=".css" mimeType="text/css" />
                 <mimeMap fileExtension=".json" mimeType="application/json" />
                 <mimeMap fileExtension=".svg" mimeType="image/svg+xml" />
