@@ -40,17 +40,17 @@ jobs:
         run: |
           # Remove type="module" from script tags since we're using IIFE format
           sed -i 's/type="module"[[:space:]]*//g' ./dist/index.html
-          
+
           # Clean up any extra spaces
           sed -i 's/<script[[:space:]]\+crossorigin/<script crossorigin/g' ./dist/index.html
-          
+
           # Verify the changes
           echo "=== HTML content after modification ==="
           cat ./dist/index.html | grep -A 3 -B 3 "script.*src"
-          
+
           echo "=== JavaScript file details ==="
           ls -la ./dist/assets/*.js
-          
+
           echo "=== JavaScript file beginning ==="
           head -c 200 ./dist/assets/*.js
 
@@ -62,7 +62,7 @@ jobs:
           AddType text/css .css
           AddType application/json .json
           AddType image/svg+xml .svg
-          
+
           # Fallback for SPA routing
           RewriteEngine On
           RewriteBase /
@@ -71,7 +71,7 @@ jobs:
           RewriteCond %{REQUEST_FILENAME} !-d
           RewriteRule . /index.html [L]
           EOF
-          
+
           # Create _headers for Netlify/Vercel compatibility
           cat > ./dist/_headers << 'EOF'
           /*.js
@@ -83,7 +83,7 @@ jobs:
           /*.svg
             Content-Type: image/svg+xml
           EOF
-          
+
           # Create web.config for IIS servers
           cat > ./dist/web.config << 'EOF'
           <?xml version="1.0" encoding="utf-8"?>
